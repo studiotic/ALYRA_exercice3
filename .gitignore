@@ -2,18 +2,22 @@
 
 # Dependencies
 node_modules
+client/node_modules
+truffle/node_modules
 .pnp
 .pnp.js
 
 # Production
-build
-client/src/contracts
-client/*/src/contracts
+#build
+#client/src/contracts
+#client/*/src/contracts
+
 
 # Testing
 coverage
 
 # Env
+truffle/.env
 .env
 .env.local
 .env.development.local
@@ -29,3 +33,5 @@ coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+denug.log
+debug.log
