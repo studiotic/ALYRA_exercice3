@@ -4,6 +4,7 @@ import useEth from "../../contexts/EthContext/useEth";
 
 //la fonction contractBTNS attend un setValue en parametre
 function ContractBtns({ setValue }) {
+
   const { state: { contract, accounts } } = useEth();
   const [inputValue, setInputValue] = useState("");
 
@@ -18,6 +19,8 @@ function ContractBtns({ setValue }) {
     setValue(value);
   };
 
+
+
   const write = async e => {
     if (e.target.tagName === "INPUT") {
       return;
@@ -29,6 +32,8 @@ function ContractBtns({ setValue }) {
     const newValue = parseInt(inputValue);
     await contract.methods.write(newValue).send({ from: accounts[0] });
   };
+
+
 
   return (
     <div className="btns">

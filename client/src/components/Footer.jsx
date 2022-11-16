@@ -5,8 +5,9 @@ function Link({ uri, text }) {
 function Footer() {
   return (
     <footer>
-      <h2>More resources</h2>
-      <Link uri={"https://trufflesuite.com"} text={"Truffle"} />
+      <br></br>
+      <h3>More resources</h3>
+      <Link uri={"https://github.com/studiotic/ALYRA_exercice3"} text={"Mon GITHUB"} />
       <Link uri={"https://reactjs.org"} text={"React"} />
       <Link uri={"https://soliditylang.org"} text={"Solidity"} />
       <Link uri={"https://ethereum.org"} text={"Ethereum"} />
