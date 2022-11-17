@@ -3,7 +3,7 @@ import { useState } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
 
-const AddVoter = () => {
+const AddVoter = (props) => {
 
     //définition des hook
     const { state: { contract, accounts, web3 } } = useEth();
@@ -46,11 +46,11 @@ const AddVoter = () => {
 
 
 
-
-
     return (
 
         < div >
+            <p>Ma propos : {props.etatVote}</p>
+
             <input
                 type="text"
                 placeholder="indiquer l'adresse du votant"
@@ -62,7 +62,7 @@ const AddVoter = () => {
             <p> une fois l'opération terminée cliquée sur le bouton Start Proposal registering </p>
             <button onClick={startProposal}>Start Proposal registering</button>
 
-            
+
 
 
         </div >

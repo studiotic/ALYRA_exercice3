@@ -17,13 +17,16 @@ function EthProvider({ children }) {
         try {
           address = artifact.networks[networkID].address;
           contract = new web3.eth.Contract(abi, address);
+
         } catch (err) {
           console.error(err);
         }
+
         dispatch({
           type: actions.init,
           data: { artifact, web3, accounts, networkID, contract }
         });
+        
       }
     }, []);
 
@@ -53,7 +56,7 @@ function EthProvider({ children }) {
   }, [init, state.artifact]);
 
   return (
-    <EthContext.Provider value={{  state,  dispatch  }}>
+    <EthContext.Provider value={{ state, dispatch }}>
       {children}
     </EthContext.Provider>
   );

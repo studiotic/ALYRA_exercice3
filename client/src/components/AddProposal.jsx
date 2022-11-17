@@ -28,7 +28,6 @@ const AddProposal = () => {
         //console.log(inputProposal);
 
         await contract.methods.addProposal(inputProposal).send({ from: accounts[0] });
-
     };
 
 

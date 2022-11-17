@@ -11,10 +11,10 @@ const AddVote = () => {
     const [inputVote, setInputVote] = useState("");
 
     const handleInputVote = e => {
-        setInputVote(e.target.value);
+        if (/^\d+$|^$/.test(e.target.value)) {
+            setInputVote(e.target.value);
+        }
     };
-
-
 
     const addVote = async e => {
 
