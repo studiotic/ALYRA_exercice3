@@ -3,7 +3,9 @@ import { useState } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
 
-const AddVoter = (props) => {
+const AddVoter = ({ etatVote, setEtatVote }) => {
+
+
 
     //définition des hook
     const { state: { contract, accounts, web3 } } = useEth();
@@ -13,6 +15,7 @@ const AddVoter = (props) => {
     const handleInputAdress = e => {
         setInputAdress(e.target.value);
     };
+
 
 
 
@@ -40,17 +43,25 @@ const AddVoter = (props) => {
     };
 
 
+
+
+
     const startProposal = async e => {
         await contract.methods.startProposalsRegistering().send({ from: accounts[0] });
+        setEtatVote(1);
     };
+
+
+
 
 
 
     return (
 
         < div >
-            <p>Ma propos : {props.etatVote}</p>
 
+            etat du vote : {etatVote}
+            <br />
             <input
                 type="text"
                 placeholder="indiquer l'adresse du votant"
@@ -59,7 +70,9 @@ const AddVoter = (props) => {
             />
 
             <button onClick={addVoter}>ajoute un votant</button>
+            <br />
             <p> une fois l'opération terminée cliquée sur le bouton Start Proposal registering </p>
+            <br />
             <button onClick={startProposal}>Start Proposal registering</button>
 
 

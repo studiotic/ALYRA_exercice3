@@ -3,7 +3,7 @@ import { useState } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
 
-const AddProposal = () => {
+const AddProposal = ({ etatVote, setEtatVote }) => {
 
     //définition des hook
     const { state: { contract, accounts } } = useEth();
@@ -33,11 +33,9 @@ const AddProposal = () => {
 
     const endProposal = async e => {
         await contract.methods.endProposalsRegistering().send({ from: accounts[0] });
+        setEtatVote(2);
     };
 
-    const startVoting = async e => {
-        await contract.methods.startVotingSession().send({ from: accounts[0] });
-    };
 
 
 
@@ -45,6 +43,10 @@ const AddProposal = () => {
     return (
 
         < div >
+            etat du vote : {etatVote}
+            <br/>
+
+
             <input
                 type="text"
                 placeholder="indiquer lvotre proposal"
@@ -62,11 +64,7 @@ const AddProposal = () => {
 
 
 
-            <p> Une fois l'opération terminée cliquée sur le bouton Start Voting </p>
-
-
-
-            <button onClick={startVoting}>Start Voting</button>
+       
 
 
 
