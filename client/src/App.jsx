@@ -1,3 +1,5 @@
+//import useEth from "./contexts/EthContext/useEth";
+//import { useState, useEffect } from "react";
 import { EthProvider } from "./contexts/EthContext";
 import "./App.css";
 
@@ -7,8 +9,6 @@ import Footer from "./components/Footer";
 
 
 function App() {
-
-
 
   return (
     <EthProvider>

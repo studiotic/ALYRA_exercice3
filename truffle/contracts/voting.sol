@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.17;
-import "@openzeppelin/contracts/access/Ownable.sol";
+pragma solidity ^0.8.0;
+import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
 contract Voting is Ownable {
     uint256 public winningProposalID;
@@ -113,6 +113,13 @@ contract Voting is Ownable {
         voters[msg.sender].hasVoted = true;
         proposalsArray[_id].voteCount++;
 
+        if (
+            proposalsArray[_id].voteCount >
+            proposalsArray[winningProposalID].voteCount
+        ) {
+            winningProposalID = _id;
+        }
+
         emit Voted(msg.sender, _id);
     }
 
@@ -176,16 +183,17 @@ contract Voting is Ownable {
             workflowStatus == WorkflowStatus.VotingSessionEnded,
             "Current status is not voting session ended"
         );
-        uint256 _winningProposalId;
-        for (uint256 p = 0; p < proposalsArray.length; p++) {
-            if (
-                proposalsArray[p].voteCount >
-                proposalsArray[_winningProposalId].voteCount
-            ) {
-                _winningProposalId = p;
-            }
-        }
-        winningProposalID = _winningProposalId;
+        //uint256 _winningProposalId;
+
+        //for (uint256 p = 0; p < proposalsArray.length; p++) {
+        //  if (
+        //      proposalsArray[p].voteCount >
+        //      proposalsArray[_winningProposalId].voteCount
+        // ) {
+        //     _winningProposalId = p;
+        //  }
+        //}
+        //winningProposalID = _winningProposalId;
 
         workflowStatus = WorkflowStatus.VotesTallied;
         emit WorkflowStatusChange(

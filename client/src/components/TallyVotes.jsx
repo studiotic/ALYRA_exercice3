@@ -4,8 +4,6 @@ import useEth from "../contexts/EthContext/useEth";
 
 const TallyVotes = ({ etatVote, setEtatVote }) => {
 
-
-
     //définition des hook
     const { state: { contract, accounts } } = useEth();
 
@@ -16,18 +14,10 @@ const TallyVotes = ({ etatVote, setEtatVote }) => {
         setEtatVote(5);
     };
 
-
-
-
-
     return (
-
-        < div >
-            <button onClick={lanceTallyVote}>Tally Vote</button>
-
+        < div className='bloc' >
+            <button onClick={lanceTallyVote} className='actionButton'>Lancer le dépouillement</button>
         </div >
-
-
     );
 };
 

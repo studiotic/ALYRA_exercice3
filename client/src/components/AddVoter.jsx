@@ -38,9 +38,16 @@ const AddVoter = ({ etatVote, setEtatVote }) => {
 
         //console.log(inputAdress);
 
-        await contract.methods.addVoter(inputAdress).send({ from: accounts[0] });
+        //await contract.methods.addVoter(inputAdress).send({ from: accounts[0] });
+
+        try {
+            await contract.methods.addVoter(inputAdress).send({ from: accounts[0] });
+        } catch (err) {
+            console.log("erreur add voter" + err)
+        }
 
     };
+
 
 
 
@@ -58,22 +65,20 @@ const AddVoter = ({ etatVote, setEtatVote }) => {
 
     return (
 
-        < div >
-
-            etat du vote : {etatVote}
-            <br />
+        < div className='bloc' >
             <input
+                className='inputProposal'
                 type="text"
                 placeholder="indiquer l'adresse du votant"
                 value={inputAdress}
                 onChange={handleInputAdress}
             />
 
-            <button onClick={addVoter}>ajoute un votant</button>
             <br />
-            <p> une fois l'opération terminée cliquée sur le bouton Start Proposal registering </p>
+            <button onClick={addVoter} className='valideButton'>ajoute un votant</button>
             <br />
-            <button onClick={startProposal}>Start Proposal registering</button>
+            <br />
+            <button onClick={startProposal} className='actionButton'>Début de l'enregistrement des propositions</button>
 
 
 

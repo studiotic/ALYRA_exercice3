@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+//import { useState } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
 const StartVoting = ({ etatVote, setEtatVote }) => {
@@ -16,12 +16,10 @@ const StartVoting = ({ etatVote, setEtatVote }) => {
 
 
     return (
-        <div>
-            etat du vote : {etatVote}
+        <div className='bloc' >
+            <h2> Pour lancer le vote cliquer sur le bouton</h2>
             <br />
-
-            <p> Pour commencer le vote cliquer sur le bouton</p>
-            <button onClick={startVoting}>Start Voting</button>
+            <button onClick={startVoting} className='actionButton'>Lancer la session de vote</button>
         </div>
     );
 };

@@ -35,10 +35,10 @@ const AddVote = ({ etatVote, setEtatVote }) => {
     };
 
 
-    const endVoting = async e => {
-        await contract.methods.endVotingSession().send({ from: accounts[0] });
-        setEtatVote(4);
-    };
+    // const endVoting = async e => {
+    //     await contract.methods.endVotingSession().send({ from: accounts[0] });
+    //     setEtatVote(4);
+    // };
 
 
 
@@ -46,21 +46,20 @@ const AddVote = ({ etatVote, setEtatVote }) => {
 
     return (
 
-        < div >
-            etat du vote : {etatVote}
+        < div className='bloc'  >
+            <h2>A vous de voter !</h2>
             <br />
             <input
+                className='inputProposal'
                 type="text"
-                placeholder="indiquer votre vote"
+                placeholder="indiquer le numéro de votre proposition"
                 value={inputVote}
                 onChange={handleInputVote}
             />
+            <br /> <br />
+            <button onClick={addVote} className='valideButton'>A voté !</button>
 
-            <button onClick={addVote}>Vote</button>
 
-
-            <p> Une fois les votes terminés cliquer sur le bouton End Voting </p>
-            <button onClick={endVoting}>End Voting</button>
 
 
 

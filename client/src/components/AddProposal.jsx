@@ -20,7 +20,7 @@ const AddProposal = ({ etatVote, setEtatVote }) => {
 
 
         if (inputProposal === "") {
-            alert("Please enter a proposal to write.");
+            alert("Entrez une proposition de vote");
             return;
         }
 
@@ -31,10 +31,10 @@ const AddProposal = ({ etatVote, setEtatVote }) => {
     };
 
 
-    const endProposal = async e => {
-        await contract.methods.endProposalsRegistering().send({ from: accounts[0] });
-        setEtatVote(2);
-    };
+    // const endProposal = async e => {
+    //     await contract.methods.endProposalsRegistering().send({ from: accounts[0] });
+    //     setEtatVote(2);
+    // };
 
 
 
@@ -42,31 +42,16 @@ const AddProposal = ({ etatVote, setEtatVote }) => {
 
     return (
 
-        < div >
-            etat du vote : {etatVote}
-            <br/>
-
-
+        < div className='bloc' >
             <input
+                className='inputProposal'
                 type="text"
-                placeholder="indiquer lvotre proposal"
+                placeholder="indiquez votre proposition"
                 value={inputProposal}
                 onChange={handleInputProposal}
             />
 
-            <button onClick={addProposal}>ajoute une proposition</button>
-
-
-            <p> Une fois l'opération terminée cliquée sur le bouton End Proposal registering </p>
-
-
-            <button onClick={endProposal}>End Proposal registering</button>
-
-
-
-       
-
-
+            <button onClick={addProposal} className='actionButton'>ajoute une proposition</button>
 
 
         </div >

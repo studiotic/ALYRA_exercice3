@@ -11,6 +11,9 @@
   --gray: #999;
   --light-gray: #e0e0e0;
   --dark-gray: #777;
+  --black: #000;
+  background-color: var(--primary-color);
+  background: linear-gradient(var(--primary-color), var(--light-gray));
 }
 
 #App .container {
@@ -20,13 +23,70 @@
   height: 100%;
 }
 
+.compteMetaMask {
+  background-color: var(--dark-gray);
+}
+
+
+.inputProposal {
+  background-color: var(--flash-color);
+  height: 30px;
+  width: 300px;
+  text-align: center;
+  border-radius: 5px 10px 0 5px;
+}
+
+.valideButton {
+  font-size: 1.5rem;
+  height: 35px;
+  width: 50%;
+  text-align: center;
+  background-color: var(black);
+  border-radius: 5px 10px 10px 5px;
+}
+
+.actionButton {
+  font-size: 1.5rem;
+  height: 35px;
+  width: 50%;
+  text-align: center;
+  background-color: var(--secondary-color);
+  border-radius: 5px 10px 10px 5px;
+}
+
+.preText {
+  color: white;
+  font-size: 0.8em;
+}
+
+
+.bloc {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle
+}
+
+
+
+/*
+#App .input-btn input {
+  width: 5rem;
+  text-align: right;
+  font-family: monospace;
+  font-size: 1.2rem;
+  background-color: var(--flash-color);
+}
+*/
+
 code {
   display: block;
   white-space: pre-wrap;
   padding: 1.2rem 2rem;
   border-radius: 1rem;
-  background-color: var(--light-gray);
+  background-color: var(--flash-color);
   font-size: 1.4rem;
+  text-align: center;
 }
 
 code span {
@@ -122,16 +182,37 @@ hr {
   cursor: pointer;
 }
 
+
+
+
 #App .container .demo .contract-container .btns>*:hover {
   background-color: var(--dark-gray);
 }
 
-#App .container .demo .contract-container .btns .input-btn input {
+#App .container .demo .contract-container .btns {
   width: 4rem;
   text-align: center;
   font-family: monospace;
   font-size: 1.2rem;
 }
+
+
+
+
+#App .button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: rgb(255, 1, 1);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+
 
 #App .container footer {
   padding-bottom: 7.5rem;

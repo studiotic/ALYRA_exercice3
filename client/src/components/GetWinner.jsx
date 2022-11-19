@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+//import { useState } from "react";
 import useEth from "../contexts/EthContext/useEth";
 
 const GetWinner = ({ etatVote, setEtatVote }) => {
@@ -11,13 +11,14 @@ const GetWinner = ({ etatVote, setEtatVote }) => {
         const idWinner = await contract.methods.winningProposalID().call({ from: accounts[0] });
         setEtatVote(5);
         console.log("getwinning : " + idWinner)
+        alert("Le gagnant est " + idWinner);
     };
 
 
 
     return (
-        <div>
-            <button onClick={getiWiningID}>Get Winner Proposal ID</button>
+        <div className='bloc'>
+            <button onClick={getiWiningID} className='actionButton'>Découvrez le gagnant</button>
         </div>
     );
 };
