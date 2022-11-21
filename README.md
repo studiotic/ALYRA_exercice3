@@ -100,14 +100,14 @@ Summary
 
 - installer node, truffle, ganache
 
-ouvir un nouvau terminal :
+ouvrir un nouvau terminal :
 - lancer ganache au moyen du terminal avec la commande ganache
 
-ouvir un nouvau terminal :
+ouvrir un nouvau terminal :
 - cd truffle
 - truffle migrate
 
-ouvir un nouvau terminal :
+ouvrir un nouvau terminal :
 - cd client
 - npm run start
 
