@@ -1,10 +1,10 @@
 # Application de Voting
 La réalisation d'une petite DAPP au design minimaliste exploitant le contrat de voting déployé sur le testnet Goerli.
 
-## adresse de deploiement de l'application dur le réseaau GOERLI
+## Adresse de déploiement de l'application dur le réseaau GOERLI
 https://alyra-exercice3.vercel.app/
 
-## correction de sécurité
+## Correctif de sécurité
 Par rapport au contrat voting.sol d'origine, un correctif de sécurité à été apporté.
 La boucle de parcours du tableau lors du talling a été remplacée par un test conditionnel lors de chaque vote pour évaluer l'id de la proposition gagnante.
 
@@ -21,7 +21,8 @@ L'application est organisée autour d'un composant central voting.jsx dans leque
 
 Selon une règle prennant en compte à la fois le compte de l'usager, à savoir si il est owner ou non, et l'etape du vote en cours, on affiche uniquement le composant qui correpond au contexte.
 
-## une démonstration video est disponible au premier niveau du github
+## Démo vidéo
+Une démonstration video est disponible au premier niveau du github
 voting.mp4
 
 ## Déploiement sur Goerli
@@ -95,7 +96,7 @@ Summary
 - Final cost:          0.196926690000140802 ETH
 
 
-## instructions pour installer et tester en local le contrat
+## Instructions pour installer et tester en local le contrat
 
 - installer node, truffle, ganache
 
