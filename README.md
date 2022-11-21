@@ -95,7 +95,7 @@ Summary
 - Final cost:          0.196926690000140802 ETH
 
 
-##instruction pour installer et tester en local le contrat
+## instructions pour installer et tester en local le contrat
 
 - installer node, truffle, ganache
 
