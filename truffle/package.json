@@ -1,7 +1,7 @@
 {
   "name": "truffle",
   "version": "1.0.0",
-  "description": "Truffle project with SimpleStorage contract",
+  "description": "Truffle project with Voting contract",
   "main": "truffle-config.js",
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0",

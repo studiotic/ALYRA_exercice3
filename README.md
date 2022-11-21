@@ -20,40 +20,75 @@ L'application est organisée autour d'un composant voting.jsx
 
 
 ## Truffle compilation and deploying on Goerli
+
+studiotic@NUNGESSER:~/CoursAlyra/ALYRA_exercice3/truffle$ truffle migrate --network goerli
+
 Compiling your contracts...
 ===========================
 > Everything is up to date, there is nothing to compile.
 
 
-Starting migrations...
-======================
-> Network name:    'development'
-> Network id:      1668937523438
+Migrations dry-run (simulation)
+===============================
+> Network name:    'goerli-fork'
+> Network id:      5
 > Block gas limit: 30000000 (0x1c9c380)
 
 
 1_deploy_voting.js
 ==================
 
-   Replacing 'Voting'
+   Deploying 'Voting'
    ------------------
-   > transaction hash:    0x43db13d7b8378fb7d0319cf4e6cb63da733d9ff88f4e38b80c2b5ff28063864a
-   > Blocks: 0            Seconds: 0
-   > contract address:    0x89e4448a4e891F569E20a3f3Fa89fb27F8ED81b5
-   > block number:        40
-   > block timestamp:     1669014738
-   > account:             0x8d85aCBC7d65A542C8149b89Db6913606d718a9B
-   > balance:             999.962100350249959549
+   > block number:        7993238
+   > block timestamp:     1669035777
+   > account:             0x867b5457aCFc1253123774c49d2814Ff4383B1Ec
+   > balance:             0.286245349164925759
    > gas used:            2068131 (0x1f8ea3)
-   > gas price:           2.5053724 gwei
+   > gas price:           72.762194169 gwei
    > value sent:          0 ETH
-   > total cost:          0.0051814383269844 ETH
+   > total cost:          0.150481749388928139 ETH
 
-   > Saving artifacts
    -------------------------------------
-   > Total cost:     0.0051814383269844 ETH
+   > Total cost:     0.150481749388928139 ETH
 
 Summary
 =======
 > Total deployments:   1
-> Final cost:          0.0051814383269844 ETH
+> Final cost:          0.150481749388928139 ETH
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'goerli'
+> Network id:      5
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_deploy_voting.js
+==================
+
+   Deploying 'Voting'
+   ------------------
+   > transaction hash:    0x862680b076dcaada25b5ff3c0818b5ce4008766c3bed64baef93a453d7bfb23f
+   > Blocks: 0            Seconds: 16
+   > contract address:    0x563Fa2c815d6D545bf53ca60351191Dd486c5494
+   > block number:        7993243
+   > block timestamp:     1669035804
+   > account:             0x867b5457aCFc1253123774c49d2814Ff4383B1Ec
+   > balance:             0.239800408553713096
+   > gas used:            2068131 (0x1f8ea3)
+   > gas price:           95.219640342 gwei
+   > value sent:          0 ETH
+   > total cost:          0.196926690000140802 ETH
+
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.196926690000140802 ETH
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.196926690000140802 ETH
