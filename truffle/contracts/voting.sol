@@ -3,20 +3,31 @@
 pragma solidity ^0.8.0;
 import "../node_modules/@openzeppelin/contracts/access/Ownable.sol";
 
+/// @title voting program
+/// @author Sébastien HOFF
+/// @notice this programm allow you to create a simple voting system
+
 contract Voting is Ownable {
+    /// @notice winningProposalID is a publicn umber dedicated to contain the winner proposal ID
+    /// @dev winningProposalID is a public uint256 whith a get to knwow the winner proposal ID. the get return a number beetween 1 and the number of proposal. Each vote, the setVote function evaluate le winningProposalID
     uint256 public winningProposalID;
 
+    /// @notice the voter structure contains all the voters and their informations
+    /// @dev isRegitred is checked when the voter isRegistred. HasVoted is check when the voter has vote. votedProposalId is the proposal id he votes
     struct Voter {
         bool isRegistered;
         bool hasVoted;
         uint256 votedProposalId;
     }
 
+    /// @notice the Proposal structure contains all the proposal
+    /// @dev string contain the name of the proposal. voteCount conain sthe number of vote for this proposal. This number is reviewed each time a voter votes for this proposal
     struct Proposal {
         string description;
         uint256 voteCount;
     }
 
+    /// @notice the WorkflowStatus contains the 6 phases of the voting programm
     enum WorkflowStatus {
         RegisteringVoters,
         ProposalsRegistrationStarted,
@@ -30,14 +41,27 @@ contract Voting is Ownable {
 
     Proposal[] proposalsArray;
 
+    /// @notice associaion beetween a voter and his adress
+    /// @dev this mapping associate the voter and his adress
     mapping(address => Voter) voters;
 
+    /// @notice The events used in the programm
+    /// @dev VoterRegistered is sent when a new voter is registred
     event VoterRegistered(address voterAddress);
+
+    /// @notice The events used in the programm
+    /// @dev WorkflowStatusChange is sent when the status changes
     event WorkflowStatusChange(
         WorkflowStatus previousStatus,
         WorkflowStatus newStatus
     );
+
+    /// @notice The events used in the programm
+    /// @dev ProposalRegistered is sent when the a new proposal is registred
     event ProposalRegistered(uint256 proposalId);
+
+    /// @notice The events used in the programm
+    /// @dev Voted is sent when the a new vote id done
     event Voted(address voter, uint256 proposalId);
 
     modifier onlyVoters() {
@@ -49,6 +73,10 @@ contract Voting is Ownable {
 
     // ::::::::::::: GETTERS ::::::::::::: //
 
+    /// @notice getVoter
+    /// @dev get the Voter info with his adress
+    /// @param _addr voter's address
+    /// @return voter informations
     function getVoter(address _addr)
         external
         view
@@ -58,6 +86,10 @@ contract Voting is Ownable {
         return voters[_addr];
     }
 
+    /// @notice getOneProposal
+    /// @dev get the information of one proposal info with its id
+    /// @param _id of the proposal
+    /// @return proposal informations
     function getOneProposal(uint256 _id)
         external
         view
@@ -68,6 +100,10 @@ contract Voting is Ownable {
     }
 
     // ::::::::::::: REGISTRATION ::::::::::::: //
+
+    /// @notice addVoter
+    /// @dev add a voter to the voting system and emit an event when it's done
+    /// @param _addr of the voter
 
     function addVoter(address _addr) external onlyOwner {
         require(
@@ -81,6 +117,10 @@ contract Voting is Ownable {
     }
 
     // ::::::::::::: PROPOSAL ::::::::::::: //
+
+    /// @notice addProposal
+    /// @dev add a proposal of voting and emit an event when it's done
+    /// @param _desc : the proposal (string)
 
     function addProposal(string calldata _desc) external onlyVoters {
         require(
@@ -100,6 +140,10 @@ contract Voting is Ownable {
     }
 
     // ::::::::::::: VOTE ::::::::::::: //
+
+    /// @notice setVote
+    /// @dev add a vote and emit an event when it's done
+    /// @param _id : the id of the proposal
 
     function setVote(uint256 _id) external onlyVoters {
         require(
@@ -125,6 +169,9 @@ contract Voting is Ownable {
 
     // ::::::::::::: STATE ::::::::::::: //
 
+    /// @notice startProposalsRegistering
+    /// @dev start the proposal registering phase (owner only)
+
     function startProposalsRegistering() external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.RegisteringVoters,
@@ -142,6 +189,9 @@ contract Voting is Ownable {
         );
     }
 
+    /// @notice endProposalsRegistering
+    /// @dev end the proposal registering phase (owner only)
+
     function endProposalsRegistering() external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.ProposalsRegistrationStarted,
@@ -153,6 +203,9 @@ contract Voting is Ownable {
             WorkflowStatus.ProposalsRegistrationEnded
         );
     }
+
+    /// @notice startVotingSession
+    /// @dev start the voting phase (owner only)
 
     function startVotingSession() external onlyOwner {
         require(
@@ -166,6 +219,9 @@ contract Voting is Ownable {
         );
     }
 
+    /// @notice endVotingSession
+    /// @dev end the voting phase (owner only)
+
     function endVotingSession() external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.VotingSessionStarted,
@@ -178,22 +234,14 @@ contract Voting is Ownable {
         );
     }
 
+    /// @notice tallyVotes
+    /// @dev start the tally vote (owner only)
+
     function tallyVotes() external onlyOwner {
         require(
             workflowStatus == WorkflowStatus.VotingSessionEnded,
             "Current status is not voting session ended"
         );
-        //uint256 _winningProposalId;
-
-        //for (uint256 p = 0; p < proposalsArray.length; p++) {
-        //  if (
-        //      proposalsArray[p].voteCount >
-        //      proposalsArray[_winningProposalId].voteCount
-        // ) {
-        //     _winningProposalId = p;
-        //  }
-        //}
-        //winningProposalID = _winningProposalId;
 
         workflowStatus = WorkflowStatus.VotesTallied;
         emit WorkflowStatusChange(
