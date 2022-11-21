@@ -21,7 +21,7 @@ L'application est organisée autour d'un composant central voting.jsx dans leque
 
 Selon une règle prennant en compte à la fois le compte de l'usager, à savoir si il est owner ou non, et l'etape du vote en cours, on affiche uniquement le composant qui correpond au contexte.
 
-## une démonstration video est disponbile au premier niveau du github
+## une démonstration video est disponible au premier niveau du github
 voting.mp4
 
 ## Déploiement sur Goerli
