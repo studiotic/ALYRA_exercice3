@@ -1,23 +1,21 @@
 # Application de Voting
-La réalisation d'une petite DAPP exploitant le contrat de voting 
+La réalisation d'une petite DAPP exploitant le contrat de voting au design minimaliste.
 
 ## correction de sécurité
-la boucle 
-
-## Installation
-Déployer le contrat
-Déployer le site web
-Lancer le site web 
-
-
-## Mode d'emploi de la version déployée
-
+la boucle de parcours du du tableau lors du talling a été rempalcée par un test condiitionnel lros de chaque vote pour évaluer l'id de la proposition gagnante.
 
 ## Revue de code
-L'application est organisée autour d'un composant voting.jsx
+L'application est organisée autour d'un composan central voting.jsx dans lequel les composants suivants sont ajoutés
+- AddVoter 
+- AddProposal 
+- EndProposal 
+- StartVoting
+- AddVote 
+- EndVoting 
+- TallyVotes 
+- GetWinner 
 
-
-
+Selon une règle prennant en compte à la fois le compte de l'usager, à savoir si il est owner ou non, et l'etape du vote, on affiche uniquement le composant qui correpond au contexte
 
 ## Truffle compilation and deploying on Goerli
 
@@ -58,8 +56,6 @@ Summary
 > Final cost:          0.150481749388928139 ETH
 
 
-
-
 Starting migrations...
 ======================
 > Network name:    'goerli'
@@ -92,3 +88,11 @@ Summary
 =======
 > Total deployments:   1
 > Final cost:          0.196926690000140802 ETH
+
+
+## adresse de deploiement de l'application dur le réseaau GOERLI
+https://alyra-exercice3.vercel.app/
+
+
+## une démonstration video est disponbile au prmeri niveau du github
+voting.mp4
